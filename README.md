@@ -40,3 +40,4 @@ Unlock "only available in mainland China". 解锁“仅限中国大陆”限制
 
 很遗憾没太多时间去添加其他服务器，以后会慢慢添加。
 
+![alt tag](https://cloud.githubusercontent.com/assets/7279067/20461748/600c2576-af42-11e6-94f1-4c40fa929394.jpg)
