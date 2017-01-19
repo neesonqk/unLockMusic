@@ -1,8 +1,6 @@
 ### unLockMusic
 Unlock "only available in mainland China". 解锁“仅限中国大陆”限制
 
-> 请不要用脚本爬音乐，现在只有一组服务器，资源非常有限，你一爬大家都没的玩了
-
 ### PAC 地址
 
 > **http://pac.unlockmusic.us**
