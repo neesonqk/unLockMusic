@@ -42,3 +42,5 @@ Unlock "only available in mainland China". 解锁“仅限中国大陆”限制
 很遗憾没太多时间去添加其他服务器，以后会慢慢添加。
 
 ![alt tag](https://cloud.githubusercontent.com/assets/7279067/22133926/68bb017e-defe-11e6-9cbc-1735511726d4.jpg)
+
+https://travis-ci.org/neesonqk/unLockMusic.svg?branch=master
