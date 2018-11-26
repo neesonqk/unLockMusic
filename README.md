@@ -5,9 +5,9 @@ Unlock "only available in mainland China". 解锁“仅限中国大陆”限制
 
 > **http://pac.unlockmusic.us**
 
-或者
+~~或者~~
 
-> **http://pac.onenorthtech.com**
+> ~~**http://pac.onenorthtech.com**~~
 
 
 之前听网易音乐经常遇到“仅限中国大陆”的烦恼，即便买了会员也不能解决这个问题，每次都要开Firefox设置代理然后通过网页播放器听歌，然而觉得麻烦无比，而且好好的客户端不能用甚是烦恼，所以干脆做个自动代理吧，一劳永逸，用了一段时间觉得很不错，分享出来吧。
