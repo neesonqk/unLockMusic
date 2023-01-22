@@ -1,3 +1,9 @@
 
 deployment/*
 */node_modules/*
+boya
+.DS_Store
+main.go.backup
+main.go.old
+.vscode/settings.json
+/cpp
