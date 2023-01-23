@@ -21,13 +21,14 @@ func main() {
 	ss, code = mpv.setIntOption("cache-secs", 160) // 10 seconds
 	fmt.Println("setInt cache-default", ss, code)
 
-	mpv.run()
+	// mpv.run()
 
 	file, err := os.OpenFile("/Users/neeson/Downloads/SoundHelix-Song-13.mp3", os.O_RDONLY, 0644)
 	if err != nil {
-		fmt.Errorf("err: %v", err)
+		panic(err)
 	}
+	defer file.Close()
 
 	fd := file.Fd()
-
+	mpv.testFd(fd)
 }
