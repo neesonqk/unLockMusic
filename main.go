@@ -1,67 +1,33 @@
 package main
 
-/*
-#cgo CFLAGS: -I./lib
-#cgo LDFLAGS: -L./lib -lmpv.1 -Wl,-rpath,./lib
-#include <stdio.h>
-#include <stdlib.h>
-#include "client.h"
-
-//** Helper functions **
-char** makeCharArray(int size) {
-	return calloc(sizeof(char*), size);
-}
-void setArrayString(char** a, int i, char* s) {
-	a[i] = s;
-}
-*/
-import "C"
-
 import (
 	"fmt"
-	"time"
-	"unsafe"
+	"os"
 )
 
 func main() {
-	fmt.Println("Hello")
-	mpv := C.mpv_create()
-	fmt.Println(mpv)
+	mpv := MPV{}
 
-	C.mpv_initialize(mpv)
-	// mpv.setOptionInt("volume", C.int(5))
+	mpv.create()
+	// s := mpv.setStringOption("softvol", "yes")
+	// fmt.Println(s)
 
-	var cmd [4]string
-	cmd[0] = "loadfile"
-	cmd[1] = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-	cmd[2] = "replace"
-	cmd[3] = "start=+100,vid=no"
-	// cmd[2] = ""
+	ss, code := mpv.setBoolOption("resume-playback", false)
+	fmt.Println("setFlag resume-playback", ss, code)
 
-	cArray := C.makeCharArray(C.int(len(cmd) + 1))
-	defer C.free(unsafe.Pointer(cArray))
+	ss, code = mpv.setBoolOption("cache", true)
+	fmt.Println("setFlag cache", ss, code)
 
-	cStr := C.CString(cmd[0])
-	C.setArrayString(cArray, C.int(0), cStr)
-	defer C.free(unsafe.Pointer(cStr))
+	ss, code = mpv.setIntOption("cache-secs", 160) // 10 seconds
+	fmt.Println("setInt cache-default", ss, code)
 
-	cStr2 := C.CString(cmd[1])
-	C.setArrayString(cArray, C.int(1), cStr2)
-	defer C.free(unsafe.Pointer(cStr2))
+	mpv.run()
 
-	cStr3 := C.CString(cmd[2])
-	C.setArrayString(cArray, C.int(2), cStr3)
-	defer C.free(unsafe.Pointer(cStr3))
+	file, err := os.OpenFile("/Users/neeson/Downloads/SoundHelix-Song-13.mp3", os.O_RDONLY, 0644)
+	if err != nil {
+		fmt.Errorf("err: %v", err)
+	}
 
-	cStr4 := C.CString(cmd[3])
-	C.setArrayString(cArray, C.int(3), cStr4)
-	defer C.free(unsafe.Pointer(cStr4))
+	fd := file.Fd()
 
-	var e = C.mpv_command(mpv, cArray)
-	fmt.Println(int(e))
-	fmt.Println(C.GoString(C.mpv_error_string(e)))
-	// mpv_terminate_destroy(mpv)
-
-	time.Sleep(20 * time.Second)
-	C.mpv_terminate_destroy(mpv)
 }
