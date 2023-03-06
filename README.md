@@ -2,14 +2,3 @@
 Unlock "only available in mainland China". 解锁“仅限中国大陆”限制
 
 ### PAC 地址
-
-Install Dart
-
-Install flutter
-
-Install Hover 
-`go install github.com/go-flutter-desktop/hover@latest`
-
-Run
-
-`hover run`
