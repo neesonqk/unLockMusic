@@ -6,7 +6,6 @@ package mpv_lib
 // #include <stdio.h>
 #include <stdlib.h>
 #include "client.h"
-
 //** Helper functions **
 char** makeCharArray(int size) {
 	return calloc(sizeof(char*), size);
@@ -26,10 +25,21 @@ import (
 	"unsafe"
 )
 
+var _mpv *MPV
+
 type MPV struct {
 	instance *C.mpv_handle
 	mutex    sync.Mutex
 	running  bool
+}
+
+func GetInstance() *MPV {
+	if _mpv == nil {
+		_mpv = &MPV{}
+		_mpv.Setup()
+	}
+
+	return _mpv
 }
 
 func (mpv *MPV) setStringOption(key string, value string) (string, int) {
@@ -63,11 +73,16 @@ func (mpv *MPV) Setup() (string, int) {
 	mpv.setBoolOption("video", false)
 
 	status := C.mpv_initialize(mpv.instance)
+
 	return mpvResult(status)
 }
 
 func (mpv *MPV) Destroy() {
 	C.mpv_terminate_destroy(mpv.instance)
+}
+
+func (mpv *MPV) IsBusy() bool {
+	return mpv.running
 }
 
 func (mpv *MPV) createPlayList() {

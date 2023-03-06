@@ -7,7 +7,6 @@ import (
 	"github.com/ying32/govcl/vcl"
 )
 
-//#include <stdlib.h>
 //#include <locale.h>
 //void setLocal() { setlocale(LC_NUMERIC, "C"); }
 import "C"
@@ -25,24 +24,6 @@ func main() {
 	// check this place, when vcl get imported, value from setLocale is overridden,
 	// so set it back again, as this is required by mpv library.
 	C.setLocal()
-
-	// mpv := MPV{}
-
-	// message, code := mpv.setup()
-	// if code < 0 {
-	// 	panic(message)
-	// }
-
-	// file, err := os.OpenFile("./CantinaBand3.wav", os.O_RDONLY, 0644)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// defer file.Close()
-
-	// mpv.playByFd(file.Fd())
-
-	// time.Sleep(4 * time.Second)
-	// mpv.destroy()
 
 	vcl.Application.Run()
 }
