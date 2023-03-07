@@ -1,17 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"zhiyin/boya/v2/player/ui/player"
 
-	_ "github.com/ying32/govcl/pkgs/macapp"
 	"github.com/ying32/govcl/vcl"
 )
 
+// #include "lib.h"
+// #include <stdlib.h>
 //#include <locale.h>
 //void setLocal() { setlocale(LC_NUMERIC, "C"); }
 import "C"
 
 func main() {
+	x := C.Add(1, 2)
+	fmt.Println(x)
 
 	vcl.Application.SetScaled(true)
 	vcl.Application.SetTitle("Boya Music Player")
